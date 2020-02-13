@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      host: 'openwrt.org',
+      host: '6j4kzg2-gosprod-qos01.i3d-hkg.ea.com',
       tool: 'runPing',
       tools: [],
       stdout: '',
@@ -25,14 +25,8 @@ export default {
     runPing(name) {
       return this.$ubus.call('oui.network', 'ping', {name});
     },
-    runPing6(name) {
-      return this.$ubus.call('oui.network', 'ping6', {name});
-    },
     runTraceroute(name) {
       return this.$ubus.call('oui.network', 'traceroute', {name});
-    },
-    runTraceroute6(name) {
-      return this.$ubus.call('oui.network', 'traceroute6', {name});
     },
     runNslookup(name) {
       return this.$ubus.call('oui.network', 'nslookup', {name});
@@ -59,19 +53,9 @@ export default {
         this.tools.push(['runPing', 'IPv4 Ping']);
     });
 
-    this.runPing6('?').then(r => {
-      if (r.code !== -1)
-        this.tools.push(['runPing6', 'IPv6 Ping']);
-    });
-
     this.runTraceroute('?').then(r => {
       if (r.code !== -1)
         this.tools.push(['runTraceroute', 'IPv4 Traceroute']);
-    });
-
-    this.runTraceroute6('?').then(r => {
-      if (r.code !== -1)
-        this.tools.push(['runTraceroute6', 'IPv6 Traceroute']);
     });
 
     this.runNslookup('?').then(r => {
