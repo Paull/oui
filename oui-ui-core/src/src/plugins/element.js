@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import i18n from '@/i18n'
-import en from 'element-ui/lib/locale/lang/en'
+// import en from 'element-ui/lib/locale/lang/en'
 import zhCN from 'element-ui/lib/locale/lang/zh-CN'
 import locale from 'element-ui/lib/locale'
 import {
+  Link,
   Pagination,
   Dialog,
   Dropdown,
@@ -55,10 +56,11 @@ import {
   Divider
 } from 'element-ui'
 
-i18n.mergeLocaleMessage('en', en)
+// i18n.mergeLocaleMessage('en', en)
 i18n.mergeLocaleMessage('zh-CN', zhCN)
 locale.i18n((key, value) => i18n.t(key, value))
 
+Vue.use(Link);
 Vue.use(Pagination);
 Vue.use(Dialog);
 Vue.use(Dropdown);
