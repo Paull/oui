@@ -108,7 +108,7 @@ export default {
           const size = (info.size / 1024 / 1024).toFixed(2);
           content += `<li><strong>${this.$t('Size')}: </strong>${size} MB</li>`;
           content += '</ul>';
-          content += `<input id="upgrade-firmware-keep" type="checkbox" checked> ${this.$t('Keep configuration when reflashing')}`;
+          content += `<input id="upgrade-firmware-keep" type="checkbox"> ${this.$t('Keep configuration when reflashing')}`;
 
           this.$confirm(content, title, {
             showClose: false,

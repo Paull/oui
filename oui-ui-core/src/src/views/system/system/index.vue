@@ -5,15 +5,6 @@
         <uci-option-input type="input" :label="$t('Hostname')" name="hostname" required rules="hostname" @applied="updateHostname"></uci-option-input>
         <uci-option-list :label="$t('Timezone')" name="zonename" required initial="UTC" :options="zoneinfo" :save="saveTimezone"></uci-option-list>
     </uci-section>
-    <uci-section :title="$t('Logging')" type="system">
-      <uci-option-input :label="$t('System log buffer size')" name="log_size" placeholder="16" append="kiB" :rules="{type: 'uinteger', min: 0, max: 128}"></uci-option-input>
-      <uci-option-input :label="$t('External system log server')" name="log_ip" placeholder="0.0.0.0" rules="ip4addr"></uci-option-input>
-      <uci-option-input :label="$t('External system log server port')" name="log_port" placeholder="514" rules="port"></uci-option-input>
-      <uci-option-list :label="$t('External system log server protocol')" name="log_proto" initial="udp" :options="logProtos" required></uci-option-list>
-      <uci-option-file :label="$t('Write system log to file')" name="log_file"></uci-option-file>
-      <uci-option-list :label="$t('Log output level')" name="conloglevel" initial="7" :options="conlogLevels" required></uci-option-list>
-      <uci-option-list :label="$t('Cron Log Level')" name="cronloglevel" initial="5" :options="cronlogLevels" required></uci-option-list>
-    </uci-section>
     <uci-section :title="$t('Time Synchronization')" name="ntp">
       <uci-option-switch :label="$t('Enable NTP client')" name="enable" save="" :load="ntpCliEnabled" :apply="ntpCliEnableApply"></uci-option-switch>
       <uci-option-switch :label="$t('Provide NTP server')" name="enable_server" depend="enable"></uci-option-switch>
@@ -28,26 +19,7 @@ import zoneinfo from './zoneinfo'
 export default {
   data() {
     return {
-      localTime: '',
-      logProtos: [
-        ['udp', 'UDP'],
-        ['tcp', 'TCP']
-      ],
-      conlogLevels: [
-        ['8', this.$t('Debug')],
-        ['7', this.$t('Info')],
-        ['6', this.$t('Notice')],
-        ['5', this.$t('Warning')],
-        ['4', this.$t('Error')],
-        ['3', this.$t('Critical')],
-        ['2', this.$t('Alert')],
-        ['1', this.$t('Emergency')]
-      ],
-      cronlogLevels: [
-        ['5', this.$t('Debug')],
-        ['8', this.$t('Normal')],
-        ['9', this.$t('Warning')]
-      ]
+      localTime: ''
     }
   },
   computed: {
