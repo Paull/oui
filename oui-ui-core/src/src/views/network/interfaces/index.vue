@@ -9,15 +9,14 @@
       <el-table-column :label="$t('Status')">
         <template v-slot="{ row }">
           <strong>{{ $t('Uptime') }}</strong>: {{ row.isUp() ? '%t'.format(row.getUptime()) : $t('Interface is down') }}<br/>
-          <strong>MAC</strong>: {{ row.getDevice() ? row.getDevice().macaddr : '' }}<br/>
-          <strong>RX</strong>: {{ '%mB'.format(row.getStatistics().rx_bytes) }}<br/>
-          <strong>TX</strong>: {{ '%mB'.format(row.getStatistics().tx_bytes) }}<br/>
+          <strong>{{ $t('RX Total') }}</strong>: {{ '%mB'.format(row.getStatistics().rx_bytes) }}<br/>
+          <strong>{{ $t('TX Total') }}</strong>: {{ '%mB'.format(row.getStatistics().tx_bytes) }}<br/>
           <strong>IPv4</strong>: {{ row.getIPv4Addrs().join(',') }}<br/>
         </template>
       </el-table-column>
-      <el-table-column label="#">
+      <el-table-column :label="$t('Operations')">
         <template v-slot="{ row }">
-          <el-button size="mini" @click="ifup(row.name)">{{ $t('Start') }}</el-button>
+          <el-button size="mini" @click="ifup(row.name)">{{ $t('Restart') }}</el-button>
           <el-button size="mini" @click="ifdown(row.name)">{{ $t('Stop') }}</el-button>
           <el-button type="primary" size="mini" @click="edit(row.name)">{{ $t('Edit') }}</el-button>
           <el-button type="danger" size="mini" @click="del(row.name)">{{ $t('Delete') }}</el-button>

@@ -5,7 +5,7 @@
         <el-breadcrumb-item v-for="(item, i) in breadcrumbs" :key="i" :to="item.to">{{ $t(item.title) }}</el-breadcrumb-item>
       </el-breadcrumb>
       <div class="header-right">
-        <el-link type="primary" @click="logout">{{ $t('Logout') }}</el-link>
+        <el-link :underline="false" icon="el-icon-switch-button" @click="logout">{{ $t('Logout') }}</el-link>
       </div>
     </el-header>
   </div>
