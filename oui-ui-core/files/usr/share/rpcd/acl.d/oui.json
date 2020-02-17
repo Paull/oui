@@ -124,25 +124,6 @@
 		}
 	},
 
-	"admin": {
-		"description": "Authentication and SSH settings",
-		"read": {
-			"uci": [
-				"dropbear"
-			]
-		},
-		"write": {
-			"ubus": {
-				"rpc-sys": [
-					"password_set"
-				]
-			},
-			"uci": [
-				"dropbear"
-			]
-		}
-	},
-
 	"users": {
 		"description": "User & Acls",
 		"read": {
@@ -164,33 +145,6 @@
 			"uci": [
 				"rpcd"
 			]
-		}
-	},
-
-	"software": {
-		"description": "Software package management",
-		"read": {
-			"ubus": {
-				"system": [
-					"info",
-					"board"
-				],
-				"oui.opkg": [
-					"list",
-					"list_installed",
-					"list_upgradable"
-				]
-			}
-		},
-		"write": {
-			"ubus": {
-				"oui.opkg": [
-					"install",
-					"remove",
-					"upgrade",
-					"update"
-				]
-			}
 		}
 	},
 
@@ -244,98 +198,6 @@
 		}
 	},
 
-	"startup": {
-		"description": "System boot settings",
-		"read": {
-			"ubus": {
-				"oui.system": [
-					"init_list",
-					"rclocal_get"
-				]
-			}
-		},
-		"write": {
-			"ubus": {
-				"oui.system": [
-					"init_action",
-					"rclocal_set"
-				]
-			}
-		}
-	},
-
-	"cron": {
-		"description": "Crontab management",
-		"read": {
-			"ubus": {
-				"oui.system": [
-					"crontab_get"
-				]
-			}
-		},
-		"write": {
-			"ubus": {
-				"oui.system": [
-					"crontab_set"
-				]
-			}
-		}
-	},
-
-	"leds": {
-		"description": "Hardware LED configuration",
-		"read": {
-			"ubus": {
-				"network.device": [
-					"status"
-				],
-				"oui.system": [
-					"led_list",
-					"usb_list"
-				]
-			}
-		}
-	},
-
-	"oui-bwm": {
-		"description": "Bandwidth Monitor",
-		"read": {
-			"uci": ["oui-bwm"]
-		},
-		"write": {
-			"uci": ["oui-bwm"]
-		}
-	},
-
-	"diagnostics": {
-		"description": "Network diagnostic tools",
-		"read": {
-			"ubus": {
-				"oui.network": [
-					"ping",
-					"ping6",
-					"traceroute",
-					"traceroute6",
-					"nslookup"
-				]
-			}
-		}
-	},
-
-	"hostnames": {
-		"description": "Host entry management",
-		"read": {
-			"uci": [
-				"dhcp"
-			]
-		},
-		"write": {
-			"uci": [
-				"dhcp"
-			]
-		}
-	},
-
 	"network": {
 		"description": "Network, switch and routing configuration",
 		"read": {
@@ -382,20 +244,6 @@
 			"uci": [
 				"network",
 				"wireless"
-			]
-		}
-	},
-
-	"routes": {
-		"description": "Routes configuration",
-		"read": {
-			"uci": [
-				"network"
-			]
-		},
-		"write": {
-			"uci": [
-				"network"
 			]
 		}
 	},
