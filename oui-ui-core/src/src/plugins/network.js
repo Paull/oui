@@ -48,15 +48,6 @@ class Interface {
     return this.getAddrs('ipv4-address', mask);
   }
 
-  getIPv6Addrs(mask) {
-    const rv = [];
-
-    rv.push(...this.getAddrs('ipv6-address', mask))
-    rv.push(...this.getAddrs('ipv6-prefix-assignment', mask))
-
-    return rv;
-  }
-
   getIPv4Gateway() {
     const rt = this.status['route'];
 
@@ -69,23 +60,10 @@ class Interface {
     return undefined;
   }
 
-  getIPv6Gateway() {
-    const rt = this.status['route'];
-
-    if (rt) {
-      for (let i = 0; i < rt.length; i++)
-        if (rt[i].target === '::' && rt[i].mask === 0)
-          return rt[i].nexthop;
-    }
-
-    return undefined;
-  }
-
   getDNSAddrs() {
     const dns4 = this.getIPv4DNS();
-    const dns6 = this.getIPv6DNS();
 
-    return [...dns4, ...dns6];
+    return [...dns4];
   }
 
   getIPv4DNS() {
@@ -95,19 +73,6 @@ class Interface {
     if (dns) {
       for (let i = 0; i < dns.length; i++)
         if (dns[i].indexOf(':') === -1)
-          rv.push(dns[i]);
-    }
-
-    return rv;
-  }
-
-  getIPv6DNS() {
-    const rv = [ ];
-    const dns = this.status['dns-server'];
-
-    if (dns) {
-      for (let i = 0; i < dns.length; i++)
-        if (dns[i].indexOf(':') > -1)
           rv.push(dns[i]);
     }
 

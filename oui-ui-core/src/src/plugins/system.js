@@ -51,10 +51,6 @@ system.initEnabled = function(name) {
   });
 }
 
-system.setPassword = function(user, password) {
-  return ubus.call('rpc-sys', 'password_set', {user, password})
-}
-
 system.reboot = function() {
   return ubus.call('system', 'reboot')
 }

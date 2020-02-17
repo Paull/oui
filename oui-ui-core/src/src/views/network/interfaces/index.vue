@@ -13,7 +13,6 @@
           <strong>RX</strong>: {{ '%mB'.format(row.getStatistics().rx_bytes) }}<br/>
           <strong>TX</strong>: {{ '%mB'.format(row.getStatistics().tx_bytes) }}<br/>
           <strong>IPv4</strong>: {{ row.getIPv4Addrs().join(',') }}<br/>
-          <strong>IPv6</strong>: {{ row.getIPv6Addrs().join(',') }}<br/>
         </template>
       </el-table-column>
       <el-table-column label="#">
@@ -34,7 +33,6 @@
             <uci-option-list :label="$t('Protocol')" name="proto" :options="protocols" initial="none" required @change="protoChanged"></uci-option-list>
           </uci-tab>
           <uci-tab :title="$t('Advanced Settings')" name="advanced">
-            <uci-option-switch :label="$t('Use builtin IPv6-management')" name="delegate" initial="1"></uci-option-switch>
             <uci-option-switch :label="$t('Force link')" name="force_link" :initial="proto === 'static' ? true : false" :description="$t('Set interface properties regardless of the link carrier (If set, carrier sense events do not invoke hotplug handlers).')"></uci-option-switch>
           </uci-tab>
           <uci-tab :title="$t('Physical Settings')" name="physical">

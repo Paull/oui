@@ -3,10 +3,10 @@
         "title": "System",
         "index": 20
     },
-    "system/system": {
+    "system/general": {
         "title": "General Settings",
         "acls": [ "system" ],
-        "view": "system/system",
+        "view": "system/general",
         "index": 10
     },
     "system/upgrade": {
