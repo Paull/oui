@@ -9,7 +9,6 @@
     <uci-option-input tab="advanced" label="Vendor Class" name="vendorid" :description="$t('Vendor Class to send when requesting DHCP')"></uci-option-input>
     <override-mac></override-mac>
     <override-mtu></override-mtu>
-    <uci-option-input tab="advanced" :label="$t('Override MTU')" name="mtu" placeholder="1500" :rules="{type: 'uinteger', max: 9200}"></uci-option-input>
   </div>
 </template>
 

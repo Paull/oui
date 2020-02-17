@@ -8,10 +8,10 @@
       </el-table-column>
       <el-table-column :label="$t('Status')">
         <template v-slot="{ row }">
-          <strong>{{ $t('Uptime') }}</strong>: {{ row.isUp() ? '%t'.format(row.getUptime()) : $t('Interface is down') }}<br/>
+          <strong>{{ $t('IP Address') }}</strong>: {{ row.getIPv4Addrs().join(',') }}<br/>
           <strong>{{ $t('RX Total') }}</strong>: {{ '%mB'.format(row.getStatistics().rx_bytes) }}<br/>
           <strong>{{ $t('TX Total') }}</strong>: {{ '%mB'.format(row.getStatistics().tx_bytes) }}<br/>
-          <strong>IPv4</strong>: {{ row.getIPv4Addrs().join(',') }}<br/>
+          <strong>{{ $t('Uptime') }}</strong>: {{ row.isUp() ? '%t'.format(row.getUptime()) : $t('Interface is down') }}<br/>
         </template>
       </el-table-column>
       <el-table-column :label="$t('Operations')">
@@ -32,7 +32,6 @@
             <uci-option-list :label="$t('Protocol')" name="proto" :options="protocols" initial="none" required @change="protoChanged"></uci-option-list>
           </uci-tab>
           <uci-tab :title="$t('Advanced Settings')" name="advanced">
-            <uci-option-switch :label="$t('Force link')" name="force_link" :initial="proto === 'static' ? true : false" :description="$t('Set interface properties regardless of the link carrier (If set, carrier sense events do not invoke hotplug handlers).')"></uci-option-switch>
           </uci-tab>
           <uci-tab :title="$t('Physical Settings')" name="physical">
             <template v-if="!virtual">
@@ -58,6 +57,7 @@ import NetworkBadge from './network-badge.vue'
 import ProtoDhcp from './proto/dhcp.vue'
 import ProtoStatic from './proto/static.vue'
 import ProtoPppoe from './proto/pppoe.vue'
+import ProtoWireguard from './proto/wireguard.vue'
 import ProtoPptp from './proto/pptp.vue'
 import ProtoL2tp from './proto/l2tp.vue'
 import Proto3g from './proto/3g.vue'
@@ -78,7 +78,8 @@ export default {
         ['none', this.$t('Unmanaged')],
         ['dhcp', this.$t('DHCP Client')],
         ['static', this.$t('Static address')],
-        ['pppoe', 'PPPoE'],
+        ['pppoe', this.$t('pppoe')],
+        ['wireguard', 'Wireguard'],
         ['pptp', 'PPtP'],
         ['l2tp', 'L2TP'],
         ['3g', '3G']
@@ -90,6 +91,7 @@ export default {
     ProtoDhcp,
     ProtoStatic,
     ProtoPppoe,
+    ProtoWireguard,
     ProtoPptp,
     ProtoL2tp,
     Proto3g,

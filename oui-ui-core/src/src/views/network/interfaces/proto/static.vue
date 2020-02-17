@@ -7,7 +7,6 @@
     <uci-option-dlist tab="general" :label="$t('DNS servers')" name="dns" rules="ipaddr"></uci-option-dlist>
     <override-mac></override-mac>
     <override-mtu></override-mtu>
-    <uci-option-input tab="advanced" :label="$t('Override MTU')" name="mtu" placeholder="1500" :rules="{type: 'uinteger', max: 9200}"></uci-option-input>
   </div>
 </template>
 
