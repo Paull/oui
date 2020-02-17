@@ -63,14 +63,9 @@
 					"dhcp_leases",
 					"arp_table",
 					"eap_support",
-					"routes",
 					"bwm"
 				],
 				"oui.system": [
-					"diskfree",
-					"syslog",
-					"dmesg",
-					"process_list",
 					"cpu_time"
 				],
 				"network": [
@@ -103,18 +98,11 @@
 					"board"
 				],
 				"oui.system": [
-					"init_list",
-					"read_dir",
-					"new_file"
+					"init_list"
 				]
 			}
 		},
 		"write": {
-			"ubus": {
-				"oui.system": [
-					"init_action"
-				]
-			},
 			"uci": [
 				"system",
 				"oui-bwm"
@@ -170,32 +158,6 @@
 		}
 	},
 
-	"backup": {
-		"description": "Backup and Restore",
-		"read": {
-			"oui-io": [
-				"backup"
-			],
-			"ubus": {
-				"oui.system": [
-					"backup_config_get",
-					"backup_list"
-				]
-			}
-		},
-		"write": {
-			"oui-io": [
-				"upload"
-			],
-			"ubus": {
-				"oui.system": [
-					"backup_clean",
-					"backup_restore"
-				]
-			}
-		}
-	},
-
 	"network": {
 		"description": "Network, switch and routing configuration",
 		"read": {
@@ -213,9 +175,6 @@
 					"status"
 				],
 				"oui.network": [
-					"switch_list",
-					"switch_info",
-					"switch_status",
 					"device_list",
 					"modem_list"
 				],

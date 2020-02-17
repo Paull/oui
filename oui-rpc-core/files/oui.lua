@@ -452,17 +452,6 @@ local methods = {
                 ubus.reply(req, {initscripts = initscripts})
             end, {}
         },
-        backup_restore = {
-            function(req, msg)
-                local resp = ubus.call("file", "exec", {command = "sysupgrade", params = {"--restore-backup", '/tmp/backup.tar.gz'}})
-                ubus.reply(req, resp)
-            end, {}
-        },
-        backup_clean = {
-            function(req, msg)
-                os.execute("rm -f /tmp/backup.tar.gz")
-            end, {}
-        },
         cpu_time = {
             function(req, msg)
                 local line = read_file("/proc/stat", "*l")
