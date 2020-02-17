@@ -3,11 +3,17 @@
         "title": "System",
         "index": 20
     },
+    "system/status": {
+        "title": "Status",
+        "acls": [ "status" ],
+        "view": "system/status",
+        "index": 10
+    },
     "system/general": {
         "title": "General Settings",
         "acls": [ "system" ],
         "view": "system/general",
-        "index": 10
+        "index": 20
     },
     "system/upgrade": {
         "title": "Reboot / Reset / Upgrade",

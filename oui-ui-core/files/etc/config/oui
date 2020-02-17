@@ -1,2 +1,2 @@
 config core main
-	option lang auto
+	option lang zh-CN

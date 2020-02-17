@@ -20,7 +20,7 @@ const router = new Router({
       children: [
         {
           path: 'home',
-          component: () => import('@/views/home.vue'),
+          component: () => import('@/views/system/status.vue'),
           meta:  {
             title: 'Home'
           }
