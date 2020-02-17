@@ -60,55 +60,6 @@ system.initEnabled = function(name) {
   });
 }
 
-system.initRun = function(name, action) {
-  return ubus.call('oui.system', 'init_action', {name, action});
-}
-
-system.initStart = function(name) {
-  return this.initRun(name, 'start');
-}
-
-system.initStop = function(name) {
-  return this.initRun(name, 'stop');
-}
-
-system.initRestart = function(name) {
-  return this.initRun(name, 'restart');
-}
-
-system.initWaitEnabled = function(name, expect, resolve) {
-  function check() {
-    this.initEnabled(name).then(enabled => {
-      if (!!enabled === expect) {
-        resolve();
-        return;
-      }
-
-      setTimeout(() => {
-        check.call(this);
-      }, 500);
-    });
-  }
-
-  check.call(this);
-}
-
-system.initEnable = function(name) {
-  return new Promise(resolve => {
-    this.initRun(name, 'enable').then(() => {
-      this.initWaitEnabled(name, true, resolve);
-    });
-  });
-}
-
-system.initDisable = function(name) {
-  return new Promise(resolve => {
-    this.initRun(name, 'disable').then(() => {
-      this.initWaitEnabled(name, false, resolve);
-    });
-  });
-}
-
 system.setPassword = function(user, password) {
   return ubus.call('rpc-sys', 'password_set', {user, password})
 }

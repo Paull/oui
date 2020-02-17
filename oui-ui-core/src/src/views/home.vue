@@ -27,14 +27,6 @@
             <el-table-column :label="$t('Leasetime remaining')" :formatter="row => row.expires <= 0 ? $t('expired') : '%t'.format(row.expires)"></el-table-column>
           </el-table>
         </el-card>
-        <el-card :header="$t('Active DHCPv6 Leases')" style="margin-bottom: 15px;">
-          <el-table :data="leases6">
-            <el-table-column :label="$t('Host')" prop="name"></el-table-column>
-            <el-table-column :label="$t('IPv6-Address')" prop="ip6addr"></el-table-column>
-            <el-table-column label="DUID" prop="duid"></el-table-column>
-            <el-table-column :label="$t('Leasetime remaining')" :formatter="row => row.expires <= 0 ? $t('expired') : '%t'.format(row.expires)"></el-table-column>
-          </el-table>
-        </el-card>
         <el-card :header="$t('Associated Stations')">
           <el-table :data="assoclist">
             <el-table-column :label="$t('MAC-Address')" prop="mac"></el-table-column>
@@ -91,7 +83,6 @@ export default {
       devices: [],
       devicesMap: {},
       leases: [],
-      leases6: [],
       assoclist: [],
       wanIsUp: false,
       lastCPUTime: null,
@@ -251,10 +242,6 @@ export default {
             return sta;
           });
         });
-      });
-
-      this.$ubus.call('oui.network', 'dhcp6_leases').then(r => {
-        this.leases6 = r.leases;
       });
     }
   }
