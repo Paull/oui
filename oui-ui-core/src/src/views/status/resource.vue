@@ -85,13 +85,11 @@ export default {
         this.lastCPUTime = times;
       });
 
-      this.$system.getInfo().then(({hostname, model, system, release, kernel, localtime, uptime, memory}) => {
+      this.$system.getInfo().then(({hostname, model, system, localtime, uptime, memory}) => {
         this.sysinfo = [
           [this.$t('Hostname'), hostname],
           [this.$t('Model'), model],
           [this.$t('Architecture'), system],
-          [this.$t('Firmware Version'), release.revision],
-          [this.$t('Kernel Version'), kernel],
           [this.$t('Local Time'), new Date(localtime * 1000).toString()],
           [this.$t('Uptime'), '%t'.format(uptime)]
         ];

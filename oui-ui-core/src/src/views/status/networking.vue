@@ -98,16 +98,16 @@ export default {
         const wan_iface = this.$network.getInterface('wan');
 
         this.laninfo = [
-          [this.$t('Protocal'), this.$t(lan_iface.status['proto'])],
+          [this.$t('Protocol'), this.$t(lan_iface.status['proto'])],
           [this.$t('IP Address'), lan_iface.getIPv4Addrs().join(', ')],
-          [this.$t('netmask'), '255.255.255.0'],
+          [this.$t('Netmask'), '255.255.255.0'],
           [this.$t('Online devices'), this.devices.length],
           [this.$t('Uptime'), '%t'.format(lan_iface.status['uptime'])]
         ];
 
         this.lanIsUp = lan_iface.status['up'];
         this.waninfo = [
-          [this.$t('Protocal'), this.$t(wan_iface.status['proto'])],
+          [this.$t('Protocol'), this.$t(wan_iface.status['proto'])],
           [this.$t('IP Address'), wan_iface.getIPv4Addrs().join(', ')],
           [this.$t('Gateway'), wan_iface.getIPv4Gateway()],
           ['DNS', wan_iface.getIPv4DNS().join(', ')],
