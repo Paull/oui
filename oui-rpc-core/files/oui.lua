@@ -415,28 +415,6 @@ local methods = {
         }
     },
     ["oui.system"] = {
-        diskfree = {
-            function(req, msg)
-                local fslist = {
-                    root = "/",
-                    tmp = "/tmp"
-                }
-                local resp = {}
-
-                for name, path in pairs(fslist) do
-                    local total, free, used = statvfs(path)
-                    if total then
-                        resp[name] = {
-                            total = total,
-                            free = free,
-                            used = used
-                        }
-                    end
-                end
-
-                ubus.reply(req, resp)
-            end, {}
-        },
         init_list = {
             function(req, msg)
                 local initscripts = {}

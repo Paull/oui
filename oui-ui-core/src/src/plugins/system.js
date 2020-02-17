@@ -18,22 +18,13 @@ system.getBoardInfo = function() {
   });
 }
 
-system.getDiskInfo = function() {
-  return new Promise(resolve => {
-    ubus.call('oui.system', 'diskfree').then(r => {
-      resolve(r);
-    });
-  });
-}
-
 system.getInfo = function() {
   return new Promise(resolve => {
     ubus.callBatch([
       ['system', 'info'],
-      ['system', 'board'],
-      ['oui.system', 'diskfree']
+      ['system', 'board']
     ]).then(r => {
-      resolve(Object.assign({}, r[0], r[1], {disk: r[2]}));
+      resolve(Object.assign({}, r[0], r[1]));
     });
   });
 }
