@@ -415,6 +415,65 @@ local methods = {
         }
     },
     ["oui.system"] = {
+        diskfree = {
+            function(req, msg)
+                local fslist = {
+                    root = "/",
+                    tmp = "/tmp"
+                }
+                local resp = {}
+
+                for name, path in pairs(fslist) do
+                    local total, free, used = statvfs(path)
+                    if total then
+                        resp[name] = {
+                            total = total,
+                            free = free,
+                            used = used
+                        }
+                    end
+                end
+
+                ubus.reply(req, resp)
+            end, {}
+        },
+        init_list = {
+            function(req, msg)
+                local initscripts = {}
+                local f = io.popen("ls /etc/init.d")
+                if f then
+                    for name in f:lines() do
+                        local start, stop, enabled = false
+                        local line = read_file("/etc/init.d/" .. name, "*l")
+                        if line and line:match("/etc/rc.common") then
+                            for line in io.lines("/etc/init.d/" .. name) do
+                                local k, v = line:match("(%S+)=(%d+)")
+                                if k == "START" then
+                                    start = v
+                                elseif k == "STOP" then
+                                    stop = v
+                                    break
+                                end
+                            end
+                            if start then
+                                if read_file("/etc/rc.d/S" .. start .. name, 1) then
+                                    enabled = true
+                                end
+
+                                initscripts[#initscripts + 1] = {
+                                    name = name,
+                                    start = tonumber(start),
+                                    stop = tonumber(stop),
+                                    enabled = enabled
+                                }
+                            end
+                        end
+                    end
+                    f:close()
+                end
+                ubus.reply(req, {initscripts = initscripts})
+            end, {}
+        },
         backup_restore = {
             function(req, msg)
                 local resp = ubus.call("file", "exec", {command = "sysupgrade", params = {"--restore-backup", '/tmp/backup.tar.gz'}})
