@@ -43,9 +43,12 @@
   "Scheduled Tasks": "Scheduled Tasks",
   "LED Configuration": "LED Configuration",
   "Network": "Network",
-  "Interfaces": "Interfaces",
+  "Lan Network": "Lan Network",
+  "Wan Network": "Wan Network",
+  "Protocal": "Protocal",
   "Networking": "Networking",
   "Resources": "Resources",
+  "Interfaces": "Interfaces",
   "DHCP/DNS": "DHCP/DNS",
   "Wireless": "Wireless",
   "Hostnames": "Hostnames",
@@ -474,5 +477,8 @@
   "Already exists": "Already exists",
   "Comment": "Comment",
   "Allow": "Allow",
-  "Deny": "Deny"
+  "Deny": "Deny",
+  "static": "static",
+  "pppoe": "pppoe",
+  "dhcp": "dhcp"
 }

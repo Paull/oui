@@ -43,6 +43,9 @@
   "Scheduled Tasks": "计划任务",
   "LED Configuration": "LED配置",
   "Network": "网络",
+  "Lan Network": "局域网",
+  "Wan Network": "互联网",
+  "Protocal": "协议",
   "Networking": "网络状态",
   "Resources": "硬件资源",
   "Interfaces": "接口",
@@ -474,5 +477,8 @@
   "Already exists": "已存在",
   "Comment": "注释",
   "Allow": "允许",
-  "Deny": "拒绝"
+  "Deny": "拒绝",
+  "static": "静态地址",
+  "pppoe": "拔号上网",
+  "dhcp": "DHCP自动分配"
 }
