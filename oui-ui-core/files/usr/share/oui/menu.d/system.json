@@ -10,8 +10,8 @@
         "index": 10
     },
     "system/upgrade": {
-        "title": "Reboot / Reset",
-        "acls": [ "backup", "upgrade" ],
+        "title": "Reboot / Reset / Upgrade",
+        "acls": [ "upgrade" ],
         "view": "system/upgrade",
         "index": 55
     }

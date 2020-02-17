@@ -38,6 +38,7 @@
   "Software": "Software",
   "Backup / Upgrade": "Backup / Upgrade",
   "Reboot / Reset": "Reboot / Reset",
+  "Reboot / Reset / Upgrade": "Reboot / Reset / Upgrade",
   "Startup": "Startup",
   "Scheduled Tasks": "Scheduled Tasks",
   "LED Configuration": "LED Configuration",

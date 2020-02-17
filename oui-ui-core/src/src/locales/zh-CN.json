@@ -38,6 +38,7 @@
   "Software": "软件包",
   "Backup / Upgrade": "备份/升级",
   "Reboot / Reset": "重启/复位",
+  "Reboot / Reset / Upgrade": "重启/复位/升级",
   "Startup": "启动项",
   "Scheduled Tasks": "计划任务",
   "LED Configuration": "LED配置",
