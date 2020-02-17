@@ -46,7 +46,7 @@
     "Puts extra debugging information into the system log": "将额外的调试信息打印至系统日志中",
     "Downlink": "下行速率",
     "Value in KByte/s, informational only": "值为 KByte/s，仅供参考",
-    "Uplink": "行速率",
+    "Uplink": "上行速率",
     "Report system instead of daemon uptime": "用系统运行时间代替进程运行时间",
     "Device UUID": "设备 UUID",
     "Announced serial number": "通告的序列号",

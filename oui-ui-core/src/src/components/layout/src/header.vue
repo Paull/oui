@@ -24,7 +24,6 @@
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="logout">{{ $t('Logout') }}</el-dropdown-item>
-            <el-dropdown-item command="reboot">{{ $t('Reboot') }}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -102,12 +101,6 @@ export default {
     onUserCommand(cmd) {
       if (cmd === 'logout') {
         this.$router.push('/login');
-      } else if (cmd === 'reboot') {
-        this.$confirm(this.$t('Really reboot now?'), this.$t('Reboot')).then(() => {
-          this.$system.reboot().then(() => {
-            this.$reconnect('Rebooting...');
-          });
-        });
       }
     }
   },
