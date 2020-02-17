@@ -60,17 +60,7 @@ define Package/oui-ui-core/install
 	$(INSTALL_DIR) $(1)/www
 	$(CP) $(PKG_BUILD_DIR)/dist/* $(1)/www/
 	$(CP) ./files/* $(1)/
-endef
-
-define Package/oui-ui-core/postinst
-#!/bin/sh
-uci batch <<-EOF
-	set uhttpd.main.ubus_prefix="/ubus"
-	set uhttpd.main.index_page='oui.html'
-	commit uhttpd
-EOF
-/etc/init.d/uhttpd restart &
-exit 0
+	$(RM) $(1)/www/js/*.map
 endef
 
 $(eval $(call BuildPackage,oui-ui-core))
