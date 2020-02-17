@@ -44,6 +44,8 @@
   "LED Configuration": "LED Configuration",
   "Network": "Network",
   "Interfaces": "Interfaces",
+  "Networking": "Networking",
+  "Resources": "Resources",
   "DHCP/DNS": "DHCP/DNS",
   "Wireless": "Wireless",
   "Hostnames": "Hostnames",

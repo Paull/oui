@@ -3,12 +3,6 @@
         "title": "System",
         "index": 20
     },
-    "system/status": {
-        "title": "Status",
-        "acls": [ "status" ],
-        "view": "system/status",
-        "index": 10
-    },
     "system/general": {
         "title": "General Settings",
         "acls": [ "system" ],

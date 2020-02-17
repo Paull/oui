@@ -43,6 +43,8 @@
   "Scheduled Tasks": "计划任务",
   "LED Configuration": "LED配置",
   "Network": "网络",
+  "Networking": "网络状态",
+  "Resources": "硬件资源",
   "Interfaces": "接口",
   "DHCP/DNS": "DHCP/DNS",
   "Wireless": "无线",
