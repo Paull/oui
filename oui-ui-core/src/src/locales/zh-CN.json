@@ -413,6 +413,7 @@
   "Enable NAT Loopback": "启用NAT环回",
   "any": "所有",
   "Enable": "启用",
+  "Disable": "禁用",
   "Traffic Rules": "通信规则",
   "Destination port": "目标端口",
   "Action": "动作",

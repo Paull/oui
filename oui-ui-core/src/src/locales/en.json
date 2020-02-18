@@ -413,6 +413,7 @@
   "Enable NAT Loopback": "Enable NAT Loopback",
   "any": "any",
   "Enable": "Enable",
+  "Disable": "Disable",
   "Traffic Rules": "Traffic Rules",
   "Destination port": "Destination port",
   "Action": "Action",
