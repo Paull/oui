@@ -18,7 +18,7 @@
         <template v-slot="{ row }">
           <el-button size="mini" @click="ifup(row.name)">{{ $t('Restart') }}</el-button>
           <el-button size="mini" @click="ifdown(row.name)">{{ $t('Stop') }}</el-button>
-          <el-button type="primary" size="mini" @click="edit(row.name)">{{ $t('Edit') }}</el-button>
+          <el-button type="primary" size="mini" @click="edit(row.name)" v-show="row.status.proto !== 'wireguard'">{{ $t('Edit') }}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -34,7 +34,7 @@
           <!-- <uci-tab :title="$t('Firewall Settings')" name="firewall">
             <uci-option-list :label="$t('Create / Assign firewall-zone')" name="_fwzone" :options="zones" :load="loadZone" :save="saveZone" allow-create :description="$t('interface-config-zone-desc')"></uci-option-list>
           </uci-tab> -->
-          <component v-if="proto !== '' && proto !== 'none'" :is="'proto-' + proto" @mounted="onProtoMounted"></component>
+          <component v-if="proto !== '' && proto !== 'none'" :is="'proto-' + proto"></component>
         </uci-section>
       </uci-form>
     </el-dialog>
@@ -46,7 +46,6 @@ import NetworkBadge from './network-badge.vue'
 import ProtoDhcp from './proto/dhcp.vue'
 import ProtoStatic from './proto/static.vue'
 import ProtoPppoe from './proto/pppoe.vue'
-import ProtoWireguard from './proto/wireguard.vue'
 import ProtoPptp from './proto/pptp.vue'
 import ProtoL2tp from './proto/l2tp.vue'
 import Proto3g from './proto/3g.vue'
@@ -66,7 +65,6 @@ export default {
         ['dhcp', this.$t('DHCP Client')],
         ['static', this.$t('Static address')],
         ['pppoe', this.$t('pppoe')],
-        ['wireguard', 'Wireguard'],
         ['pptp', 'PPTP'],
         ['l2tp', 'L2TP'],
         ['3g', '3G']
@@ -78,7 +76,6 @@ export default {
     ProtoDhcp,
     ProtoStatic,
     ProtoPppoe,
-    ProtoWireguard,
     ProtoPptp,
     ProtoL2tp,
     Proto3g,
