@@ -16,11 +16,11 @@
         "view": "network/wireless",
         "index": 20
     },
-    "network/firewall": {
-        "title": "Firewall",
+    "network/dnat": {
+        "title": "Port Forwards",
         "acls": [ "firewall" ],
         "files": [ "/etc/config/firewall" ],
-        "view": "network/firewall",
-        "index": 60
+        "view": "network/dnat",
+        "index": 30
     }
 }
