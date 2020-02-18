@@ -1,6 +1,6 @@
 module.exports = {
   indexPath: 'oui.html',
-  productionSourceMap: true,
+  productionSourceMap: false,
   devServer: {
     proxy: {
       '/ubus': {

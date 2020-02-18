@@ -24,7 +24,6 @@ import wireless from './plugins/wireless'
 
 import CardList from './components/card-list.vue'
 import CardTable from './components/card-table.vue'
-import OuiLine from './components/oui-line.vue'
 
 import './components/uci-form'
 
@@ -45,7 +44,6 @@ Vue.use(wireless)
 
 Vue.component('CardList', CardList)
 Vue.component('CardTable', CardTable)
-Vue.component('OuiLine', OuiLine)
 
 new Vue({
   router,
