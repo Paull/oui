@@ -2,17 +2,5 @@
     "status": {
         "title": "Status",
         "index": 10
-    },
-    "status/networking": {
-        "title": "Networking",
-        "acls": [ "network" ],
-        "view": "status/networking",
-        "index": 20
-    },
-    "status/resources": {
-        "title": "Resources",
-        "acls": [ "status" ],
-        "view": "status/resource",
-        "index": 30
     }
 }

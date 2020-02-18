@@ -25,8 +25,6 @@ import {
   Table,
   TableColumn,
   Tooltip,
-  Breadcrumb,
-  BreadcrumbItem,
   Form,
   FormItem,
   Tabs,
@@ -81,8 +79,6 @@ Vue.use(ButtonGroup);
 Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Tooltip);
-Vue.use(Breadcrumb);
-Vue.use(BreadcrumbItem);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Tabs);

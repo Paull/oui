@@ -3,24 +3,30 @@
         "title": "Network",
         "index": 30
     },
+    "network/status": {
+        "title": "Networking",
+        "acls": [ "network" ],
+        "view": "network/status",
+        "index": 10
+    },
     "network/interfaces": {
         "title": "Wired Network",
         "acls": [ "network" ],
         "view": "network/interfaces",
-        "index": 10
+        "index": 20
     },
     "network/wireless": {
         "title": "Wireless Network",
         "acls": [ "network" ],
         "files": [ "/etc/config/wireless" ],
         "view": "network/wireless",
-        "index": 20
+        "index": 30
     },
     "network/dnat": {
         "title": "Port Forwards",
         "acls": [ "firewall" ],
         "files": [ "/etc/config/firewall" ],
         "view": "network/dnat",
-        "index": 30
+        "index": 40
     }
 }
