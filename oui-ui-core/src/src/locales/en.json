@@ -486,5 +486,6 @@
   "Deny": "Deny",
   "static": "static",
   "pppoe": "pppoe",
-  "dhcp": "dhcp"
+  "dhcp": "dhcp",
+  "App desc": "App desc"
 }

@@ -1,9 +1,9 @@
 <template>
   <uci-form config="firewall" ref="form" tabbed :after-loaded="load">
     <uci-section type="redirect" :title="$t('Port Forwards')" table addable sortable :filter="filterDnat" :after-add="afterAdd">
-      <uci-option-input :label="$t('Name')" name="name"></uci-option-input>
-      <uci-option-list :label="$t('Protocol')" name="proto" :options="protos" initial="tcp udp" allow-create></uci-option-list>
+      <uci-option-input :label="$t('App desc')" name="name"></uci-option-input>
       <uci-option-input :label="$t('External port')" name="src_dport" rules="port"></uci-option-input>
+      <uci-option-list :label="$t('Protocol')" name="proto" :options="protos" initial="tcp" allow-create></uci-option-list>
       <uci-option-list :label="$t('Internal IP address')" name="dest_ip" :options="arps" allow-create rules="ip4addr"></uci-option-list>
       <uci-option-input :label="$t('Internal port')" name="dest_port" rules="port"></uci-option-input>
       <uci-option-switch :label="$t('Enable')" name="enabled" initial="1"></uci-option-switch>
