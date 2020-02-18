@@ -1,8 +1,12 @@
 <template>
   <div>
-    <el-row :gutter="20">
-      <el-col :span="12"><CardList :title="$t('Lan Network')" :list="laninfo"></CardList></el-col>
-      <el-col :span="12"><CardList :title="$t('Wan Network')" :list="waninfo"></CardList></el-col>
+    <el-row :gutter="10">
+      <el-col :sm="24" :md="12">
+        <CardList :title="$t('Lan Network')" :list="laninfo"></CardList>
+      </el-col>
+      <el-col :sm="24" :md="12">
+        <CardList :title="$t('Wan Network')" :list="waninfo"></CardList>
+      </el-col>
     </el-row>
     <el-card :header="$t('Terminal devices')" style="margin-bottom: 15px;">
       <el-table :data="devices">

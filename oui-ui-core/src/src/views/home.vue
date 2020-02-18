@@ -1,10 +1,10 @@
 <template>
   <div>
-    <el-row :gutter="20" style="margin-bottom: 15px">
-      <el-col :span="12">
+    <el-row :gutter="10">
+      <el-col :md="24" :lg="12">
         <card-list :title="$t('System information')" :list="sysinfo"></card-list>
       </el-col>
-      <el-col :span="12">
+      <el-col :md="24" :lg="12">
         <el-card :header="$t('Resource usage')">
           <e-charts :options="resourceChart"></e-charts>
         </el-card>

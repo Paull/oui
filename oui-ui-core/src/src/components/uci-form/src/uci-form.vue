@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="visibility: hidden"><slot></slot></div>
-    <el-form ref="form" label-width="280px" :model="form" :rules="rules" :disabled="readonly" @validate="onValidate">
+    <el-form ref="form" label-width="80px" :model="form" :rules="rules" :disabled="readonly" @validate="onValidate">
       <uci-form-body></uci-form-body>
     </el-form>
     <el-button-group style="margin-right: 50px; float: right">
