@@ -159,8 +159,7 @@
 					"status"
 				],
 				"oui.network": [
-					"device_list",
-					"modem_list"
+					"device_list"
 				],
 				"oui.network.bwmon": [
 					"devices",

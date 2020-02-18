@@ -2,8 +2,8 @@
   <div>
     <uci-option-input tab="general" :label="$t('PAP/CHAP username')" name="username"></uci-option-input>
     <uci-option-input tab="general" :label="$t('PAP/CHAP password')" name="password" password></uci-option-input>
-    <uci-option-input tab="general" :label="$t('Access Concentrator')" name="ac" :placeholder="$t('auto')"></uci-option-input>
-    <uci-option-input tab="general" :label="$t('Service Name')" name="service" :placeholder="$t('auto')"></uci-option-input>
+    <uci-option-input tab="advanced" :label="$t('Access Concentrator')" name="ac" :placeholder="$t('auto')"></uci-option-input>
+    <uci-option-input tab="advanced" :label="$t('Service Name')" name="service" :placeholder="$t('auto')"></uci-option-input>
     <uci-option-switch tab="advanced" :label="$t('Use default gateway')" name="defaultroute" initial="1" ></uci-option-switch>
     <uci-option-input tab="advanced" :label="$t('Use gateway metric')" name="metric" placeholder="0" depend="defaultroute" rules="uinteger"></uci-option-input>
     <uci-option-switch tab="advanced" :label="$t('Use DNS servers advertised by peer')" name="peerdns" initial="1"></uci-option-switch>

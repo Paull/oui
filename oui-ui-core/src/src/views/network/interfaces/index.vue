@@ -48,7 +48,6 @@ import ProtoStatic from './proto/static.vue'
 import ProtoPppoe from './proto/pppoe.vue'
 import ProtoPptp from './proto/pptp.vue'
 import ProtoL2tp from './proto/l2tp.vue'
-import Proto3g from './proto/3g.vue'
 import Ifname from './ifname.vue'
 
 export default {
@@ -66,8 +65,7 @@ export default {
         ['static', this.$t('Static address')],
         ['pppoe', this.$t('pppoe')],
         ['pptp', 'PPTP'],
-        ['l2tp', 'L2TP'],
-        ['3g', '3G']
+        ['l2tp', 'L2TP']
       ]
     }
   },
@@ -78,7 +76,6 @@ export default {
     ProtoPppoe,
     ProtoPptp,
     ProtoL2tp,
-    Proto3g,
     Ifname
   },
   computed: {

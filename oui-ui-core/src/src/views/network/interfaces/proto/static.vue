@@ -2,9 +2,9 @@
   <div>
     <uci-option-input tab="general" :label="$t('IPv4 address')" name="ipaddr" required rules="ip4addr" @change="ipChange"></uci-option-input>
     <uci-option-list tab="general" :label="$t('IPv4 netmask')" name="netmask" allow-create :options="netmasks" required rules="netmask4" @change="maskChange"></uci-option-list>
-    <uci-option-input tab="general" :label="$t('IPv4 broadcast')" name="broadcast" :placeholder="broadcast" rules="ip4addr"></uci-option-input>
     <uci-option-input tab="general" :label="$t('IPv4 gateway')" name="gateway" rules="ip4addr"></uci-option-input>
     <uci-option-dlist tab="general" :label="$t('DNS servers')" name="dns" rules="ipaddr"></uci-option-dlist>
+    <uci-option-input tab="advanced" :label="$t('IPv4 broadcast')" name="broadcast" :placeholder="broadcast" rules="ip4addr"></uci-option-input>
     <override-mac></override-mac>
     <override-mtu></override-mtu>
   </div>
