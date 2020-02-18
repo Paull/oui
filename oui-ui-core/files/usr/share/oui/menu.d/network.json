@@ -4,13 +4,13 @@
         "index": 30
     },
     "network/interfaces": {
-        "title": "Interfaces",
+        "title": "Wired Network",
         "acls": [ "network" ],
         "view": "network/interfaces",
         "index": 10
     },
     "network/wireless": {
-        "title": "Wireless",
+        "title": "Wireless Network",
         "acls": [ "network" ],
         "files": [ "/etc/config/wireless" ],
         "view": "network/wireless",
