@@ -4,7 +4,6 @@
       <uci-form config="wireless" :apply-timeout="15">
         <uci-section type="wifi-iface" :options="{radio: radio.name}" :filter="filterInterface">
           <uci-tab :title="$t('General Settings')" name="general">
-            <uci-option-switch :label="$t('Disable')" name="disabled"></uci-option-switch>
             <uci-option-input label="SSID" name="ssid" required></uci-option-input>
             <uci-option-list :label="$t('Encryption')" name="encryption" :options="encryptions" initial="none" :load="loadEncr" :save="saveEncr"></uci-option-list>
             <uci-option-list :label="$t('Cipher')" name="cipher" depend="encryption != 'none'" :options="ciphers" initial="auto" :load="loadCipher" :save="saveCipher"></uci-option-list>
