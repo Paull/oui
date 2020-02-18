@@ -60,7 +60,7 @@ define Package/oui-ui-core/install
 	$(INSTALL_DIR) $(1)/www
 	$(CP) $(PKG_BUILD_DIR)/dist/* $(1)/www/
 	$(CP) ./files/* $(1)/
-  $(RM) $(1)/www/js/*.map
+	$(RM) $(1)/www/js/*.map
 endef
 
 $(eval $(call BuildPackage,oui-ui-core))
