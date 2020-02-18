@@ -21,7 +21,7 @@
         <el-table-column :label="$t('Leasetime remaining')" :formatter="row => row.expires <= 0 ? $t('expired') : '%t'.format(row.expires)"></el-table-column>
       </el-table>
     </el-card>
-    <el-card :header="$t('Associated Stations')">
+    <el-card :header="$t('Associated Stations')" style="margin-bottom: 15px;">
       <el-table :data="assoclist">
         <el-table-column :label="$t('MAC-Address')" prop="mac"></el-table-column>
         <el-table-column :label="$t('Host')" prop="host"></el-table-column>
@@ -33,6 +33,15 @@
         </el-table-column>
         <el-table-column :label="$t('RX Rate')" :formatter="formatWifiRxRate"></el-table-column>
         <el-table-column :label="$t('TX Rate')" :formatter="formatWifiTxRate"></el-table-column>
+      </el-table>
+    </el-card>
+    <el-card :header="$t('Active UPnP Redirects')">
+      <el-table :data="activeRedirects">
+        <el-table-column prop="intaddr" :label="$t('Internal IP address')"></el-table-column>
+        <el-table-column prop="proto" :label="$t('Protocol')"></el-table-column>
+        <el-table-column prop="intport" :label="$t('Internal port')"></el-table-column>
+        <el-table-column prop="extport" :label="$t('External port')"></el-table-column>
+        <el-table-column prop="descr" :label="$t('Description')" min-width="250"></el-table-column>
       </el-table>
     </el-card>
   </div>
@@ -49,7 +58,7 @@ export default {
       devicesMap: {},
       leases: [],
       assoclist: [],
-      wanIsUp: false
+      activeRedirects: []
     }
   },
   timers: {
@@ -105,7 +114,6 @@ export default {
           [this.$t('Uptime'), '%t'.format(lan_iface.status['uptime'])]
         ];
 
-        this.lanIsUp = lan_iface.status['up'];
         this.waninfo = [
           [this.$t('Protocol'), this.$t(wan_iface.status['proto'])],
           [this.$t('IP Address'), wan_iface.getIPv4Addrs().join(', ')],
@@ -113,7 +121,6 @@ export default {
           ['DNS', wan_iface.getIPv4DNS().join(', ')],
           [this.$t('Uptime'), '%t'.format(wan_iface.status['uptime'])]
         ];
-        this.wanIsUp = wan_iface.status['up'];
       });
 
       this.$ubus.call('oui.network', 'dhcp_leases').then(r => {
@@ -156,6 +163,10 @@ export default {
             return sta;
           });
         });
+      });
+
+      this.$ubus.call('upnp', 'status').then(r => {
+        this.activeRedirects = r.entries;
       });
     }
   }

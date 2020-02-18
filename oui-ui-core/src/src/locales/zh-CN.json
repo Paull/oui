@@ -487,5 +487,6 @@
   "static": "静态地址",
   "pppoe": "拔号上网",
   "dhcp": "DHCP自动分配",
-  "App desc": "应用描述"
+  "App desc": "应用描述",
+  "Active UPnP Redirects": "已激活的UPnP端口映射"
 }

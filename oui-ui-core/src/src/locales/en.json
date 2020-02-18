@@ -487,5 +487,6 @@
   "static": "static",
   "pppoe": "pppoe",
   "dhcp": "dhcp",
-  "App desc": "App desc"
+  "App desc": "App desc",
+  "Active UPnP Redirects": "Active UPnP Redirects"
 }
