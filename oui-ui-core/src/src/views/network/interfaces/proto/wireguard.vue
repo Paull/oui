@@ -10,12 +10,8 @@ import OverrideMtu from './override-mtu'
 
 export default {
   mixins: [mixin],
-  inject: ['uciSection'],
   data() {
-    return {
-      virtual: true,
-      floating: true
-    }
+    return {}
   },
   components: {
     OverrideMtu

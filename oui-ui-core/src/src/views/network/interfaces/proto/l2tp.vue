@@ -18,10 +18,7 @@ import OverrideMtu from './override-mtu'
 export default {
   mixins: [mixin],
   data() {
-    return {
-      virtual: true,
-      floating: true
-    }
+    return {}
   },
   components: {
     OverrideMtu

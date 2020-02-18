@@ -26,10 +26,7 @@ export default {
     OverrideMtu
   },
   data() {
-    return {
-      virtual: true,
-      floating: true
-    }
+    return {}
   }
 }
 </script>

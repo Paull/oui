@@ -22,8 +22,6 @@ export default {
   inject: ['uciSection'],
   data() {
     return {
-      virtual: false,
-      floating: false,
       macaddr: ''
     }
   },

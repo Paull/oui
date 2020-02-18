@@ -25,8 +25,6 @@ export default {
   mixins: [mixin],
   data() {
     return {
-      virtual: true,
-      floating: true,
       modemDevices: [],
       services: [
         ['umts', 'UMTS/GPRS'],
