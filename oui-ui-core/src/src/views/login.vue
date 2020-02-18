@@ -1,16 +1,12 @@
 <template>
   <el-card :header="$t('Authorization Required')" class="oui-login">
-    <el-alert :title="$t('Wrong username or password given!')" type="error" effect="dark" :closable="false" v-if="!valid"></el-alert>
-    <el-form ref="login" :model="form" label-width="100px" label-position="left" :rules="rules">
-      <el-form-item :label="$t('Username')" prop="username">
-        <el-input v-model="form.username" prefix-icon="el-icon-user-solid" :placeholder="$t('Please input username')" @keyup.enter.native="handleLogin"></el-input>
-      </el-form-item>
-      <el-form-item :label="$t('Password')" prop="password">
+    <el-alert :title="$t('Wrong password given!')" type="error" effect="dark" :closable="false" v-if="!valid"></el-alert>
+    <el-form ref="login" :model="form">
+      <el-form-item>
         <el-input v-model="form.password" show-password prefix-icon="el-icon-lock" :placeholder="$t('Please input password')" @keyup.enter.native="handleLogin"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="handleLogin" style="width: 70%">{{ $t('Login') }}</el-button>
-        <el-button type="warning" @click="reset">{{ $t('Reset') }}</el-button>
+      <el-form-item right>
+        <el-button type="primary" @click="handleLogin">{{ $t('Login') }}</el-button>
       </el-form-item>
     </el-form>
   </el-card>
@@ -21,13 +17,8 @@ export default {
   data() {
     return {
       form: {
-        username: '',
+        username: 'root',
         password: ''
-      },
-      rules: {
-        username: [
-          {required: true, message: this.$t('This field is required')}
-        ]
       },
       valid: true
     }
@@ -48,10 +39,6 @@ export default {
           });
         }
       });
-    },
-    reset() {
-      this.$refs['login'].resetFields();
-      this.valid = true;
     }
   },
   created() {
@@ -62,7 +49,7 @@ export default {
 
 <style lang="scss">
 .oui-login {
-  width: 500px;
+  min-width: 300px;
   top: 50%;
   left: 50%;
   position: absolute;
