@@ -19,11 +19,9 @@
           <el-button size="mini" @click="ifup(row.name)">{{ $t('Restart') }}</el-button>
           <el-button size="mini" @click="ifdown(row.name)">{{ $t('Stop') }}</el-button>
           <el-button type="primary" size="mini" @click="edit(row.name)">{{ $t('Edit') }}</el-button>
-          <el-button type="danger" size="mini" @click="del(row.name)">{{ $t('Delete') }}</el-button>
         </template>
       </el-table-column>
     </el-table>
-    <el-button type="primary" size="small" style="margin-top: 10px" @click="handleAdd">+ {{ $t('Add interface') }}</el-button>
     <el-dialog :title="dialogTitle" :visible.sync="dialogVisible" custom-class="interface-edit-dialog">
       <uci-form config="network" v-if="dialogVisible" :apply-timeout="15">
         <uci-section :name="editorIface">
@@ -161,46 +159,6 @@ export default {
     },
     ifdown(name) {
       this.$ubus.call('oui.network', 'ifdown', {name: name});
-    },
-    del(name) {
-      this.$confirm(this.$t('Really delete this interface? The deletion cannot be undone!You might lose access to this device if you are connected via this interface.'), `${this.$t('Delete interface')} "${name}"`).then(() => {
-        const loading = this.$getLoading();
-
-        this.$uci.del('network', name);
-        this.$uci.save().then(() => {
-          this.$uci.apply().then(() => {
-            this.load();
-            loading.close();
-          });
-        });
-      });
-    },
-    add(name) {
-      const loading = this.$getLoading();
-
-      this.$uci.add('network', 'interface', name);
-      this.$uci.save().then(() => {
-        this.$uci.apply().then(() => {
-          this.load();
-          loading.close();
-        });
-      });
-    },
-    handleAdd() {
-      this.$prompt(this.$t('Please input a name'), this.$t('Add'), {
-        inputValidator: value => {
-          if (!value || value.match(/^[a-zA-Z0-9_]+$/) === null)
-            return this.$t('Must be a valid UCI identifier');
-
-          for (let i = 0; i < this.interfaces.length; i++)
-            if (this.interfaces[i].name === value)
-              return this.$t('Name already used');
-
-          return true;
-        }
-      }).then(r => {
-        this.add(r.value);
-      });
     }
   }
 }
