@@ -76,70 +76,6 @@ local function menu_files(files)
     return true
 end
 
-local function opkg_list(action, msg)
-    local limit = msg.limit or 100
-    local offset = msg.offset or 0
-    local pattern = msg.pattern
-
-    if offset < 0 then offset = 0 end
-    if limit > 100 then limit = 100 end
-
-    local cmd = string.format( "opkg %s --size --nocase %s", action, msg.pattern or "")
-    local upgradable = action == "list-upgradable"
-    local packages = {}
-    local total = 0
-
-    local f = io.popen(cmd)
-    if f then
-        local i = -1
-        local count = 0
-        local prev
-
-        for line in f:lines() do
-            local name, version, field = line:match("(%S+) %- (%S+) %- (%S+)")
-            if name and prev ~= name then
-                total = total + 1
-                prev = name
-                i = i + 1
-            end
-
-            if name and i >= offset and count < limit then
-                local pkg = packages[name]
-                if not pkg then
-                    count = count + 1
-                    packages[name] = {size = 0, version = version}
-                    pkg = packages[name]
-                end
-
-                if upgradable then
-                    pkg.new_version = field
-                else
-                    local size = tonumber(field)
-                    if size > 0 then pkg.size = size end
-
-                    local description = line:sub(#name + #version + #field + 10)
-                    if #description > 0 then pkg.description = description end
-                end
-            end
-        end
-        f:close()
-    end
-
-    local resp = {packages = {}, total = total}
-
-    for name, pkg in pairs(packages) do
-        resp.packages[#resp.packages + 1] = {
-            name = name,
-            version = pkg.version,
-            size = pkg.size,
-            new_version = pkg.new_version,
-            description = pkg.description
-        }
-    end
-
-    return resp
-end
-
 local function dnsmasq_leasefile()
     local c = uci.cursor()
     local leasefile
@@ -154,9 +90,7 @@ end
 local function network_cmd(name, cmd)
     local cmds = {
         ping = {"-c", "5", "-W", "1", name},
-        ping6 = {"-c", "5", "-W", "1", name},
         traceroute = {"-q", "1", "-w", "1", "-n", name},
-        traceroute6 = {"-q", "1", "-w", "2", "-n", name},
         nslookup = {name}
     }
 
